@@ -37,6 +37,9 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.play.services.ads)
     implementation(libs.applovin.sdk)
+    implementation(libs.androidx.core.ktx)
+    implementation(platform(libs.kotlin.bom))
+    implementation(libs.androidx.appcompat)
 }
 
 afterEvaluate {
