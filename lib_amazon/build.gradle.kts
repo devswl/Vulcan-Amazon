@@ -5,13 +5,10 @@ plugins {
 }
 
 android {
-    namespace = "com.vulcanlabs.library.amazon.base"
+    namespace = "com.vulcanlabs.library.amazon"
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 21
-        targetSdk = 34
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -49,10 +46,7 @@ afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
-                afterEvaluate {
-                    from(components["release"])
-                }
-
+                from(components["release"])
                 groupId = "com.vulcanlabs.library"
                 artifactId = "amazon"
                 version = "1.0.0"

@@ -8,7 +8,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.vulcanlabs.library.amazon"
+        applicationId = "com.vulcanlabs.demo"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
