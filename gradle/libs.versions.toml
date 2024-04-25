@@ -1,0 +1,35 @@
+[versions]
+agp = "7.4.2"
+kotlin = "1.9.0"
+coreKtx = "1.12.0"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+appcompat = "1.6.1"
+material = "1.11.0"
+amazon-aps-sdk = "9.8.6"
+amazon-aps-admob-adapter = "3.0.2"
+amazon-amazon-tam-adapter = "9.8.6.0"
+gson = "2.10"
+play-services-ads = "22.3.0"
+applovin = "11.11.3"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+aps-sdk = { group = "com.amazon.android", name = "aps-sdk", version.ref = "amazon-aps-sdk" }
+aps-admob-adapter = { group = "com.amazon.android", name = "aps-admob-adapter", version.ref = "amazon-aps-admob-adapter" }
+amazon-tam-adapter = { group = "com.applovin.mediation", name = "amazon-tam-adapter", version.ref = "amazon-amazon-tam-adapter" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "play-services-ads" }
+applovin-sdk = { group = "com.applovin", name = "applovin-sdk", version.ref = "applovin" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+mavenPublish = { id = "maven-publish", version.ref = "agp" }
