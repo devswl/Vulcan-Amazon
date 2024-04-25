@@ -2,7 +2,6 @@ package com.vulcanlabs.library.amazon.manager
 
 import android.content.Context
 import android.os.Bundle
-import com.vulcanlabs.library.amazon.objects.AmazonData
 import com.amazon.admob_adapter.APSAdMobCustomEvent
 import com.amazon.device.ads.AdError
 import com.amazon.device.ads.AdRegistration
@@ -16,8 +15,9 @@ import com.amazon.device.ads.DTBAdUtil
 import com.amazon.device.ads.MRAIDPolicy
 import com.applovin.mediation.MaxAdFormat
 import com.google.android.gms.ads.mediation.MediationExtrasReceiver
+import com.vulcanlabs.library.amazon.objects.AmazonData
 
-class AmazonManager {
+class AmazonManager() {
     private var amazonData: AmazonData? = null
     fun setupConfigForAdmob(context: Context, data: AmazonData?, isTesting: Boolean) {
         amazonData = data
