@@ -37,9 +37,6 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.play.services.ads)
     implementation(libs.applovin.sdk)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
 
 afterEvaluate {
