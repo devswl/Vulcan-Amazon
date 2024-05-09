@@ -11,7 +11,7 @@ amazon-aps-sdk = "9.9.5"
 amazon-aps-admob-adapter = "4.0.0"
 amazon-amazon-tam-adapter = "9.9.5.0"
 gson = "2.10.1"
-play-services-ads = "23.0.0"
+play-services-ads = "22.3.0"
 applovin = "12.4.2"
 kotlinBom = "1.8.0"
 
