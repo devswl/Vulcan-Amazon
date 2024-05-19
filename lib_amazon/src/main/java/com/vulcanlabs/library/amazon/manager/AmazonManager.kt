@@ -79,7 +79,7 @@ class AmazonManager() {
 
     fun initAdMobBanner(): Pair<Class<out MediationExtrasReceiver>, Bundle>? {
         val pair = amazonData?.bannerId?.let {
-            val bundle = DTBAdUtil.createAdMobInterstitialRequestBundle(it)
+            val bundle = DTBAdUtil.createAdMobBannerRequestBundle(it, 320, 50)
             Pair<Class<out MediationExtrasReceiver>, Bundle>(
                 APSAdMobCustomEvent::class.java,
                 bundle
