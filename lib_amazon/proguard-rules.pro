@@ -21,3 +21,11 @@
 #-renamesourcefileattribute SourceFile
 -keep class com.vulcanlabs.library.amazon.objects.** {*;}
 -keep class com.vulcanlabs.library.amazon.manager.** {*;}
+
+-keep class com.applovin.mediation.ads.** { *; }
+-keep public class com.android.installreferrer.** { *; }
+
+-keep class com.amazon.** { *; }
+-keep public class com.google.android.gms.ads.** {
+    public *;
+}
