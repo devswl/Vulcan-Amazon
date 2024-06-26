@@ -16,6 +16,8 @@ import com.amazon.device.ads.MRAIDPolicy
 import com.applovin.mediation.MaxAdFormat
 import com.google.android.gms.ads.mediation.MediationExtrasReceiver
 import com.vulcanlabs.library.amazon.objects.AmazonData
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 class AmazonManager() {
     private var amazonData: AmazonData? = null
@@ -104,6 +106,30 @@ class AmazonManager() {
         }
     }
 
+    suspend fun initMaxInterstitialV2(): Result<Pair<Any, Any>?> =
+        suspendCoroutine { continuation ->
+            amazonData?.interId?.let {
+                val adLoader = DTBAdRequest()
+                adLoader.setSizes(DTBAdSize.DTBInterstitialAdSize(it))
+                adLoader.loadAd(object : DTBAdCallback {
+                    override fun onFailure(adError: AdError) {
+                        continuation.resume(Result.success(Pair("amazon_ad_error", adError)))
+                    }
+
+                    override fun onSuccess(dtbAdResponse: DTBAdResponse) {
+                        continuation.resume(
+                            Result.success(
+                                Pair(
+                                    "amazon_ad_response",
+                                    dtbAdResponse
+                                )
+                            )
+                        )
+                    }
+                })
+            }
+        }
+
     fun initMaxReward(callback: ((Result<Pair<Any, Any>?>) -> Unit)? = null) {
         amazonData?.rewardId?.let {
             val adLoader = DTBAdRequest()
@@ -115,6 +141,22 @@ class AmazonManager() {
 
                 override fun onSuccess(dtbAdResponse: DTBAdResponse) {
                     callback?.invoke(Result.success(Pair("amazon_ad_response", dtbAdResponse)))
+                }
+            })
+        }
+    }
+
+    suspend fun initMaxRewardV2(): Result<Pair<Any, Any>?> = suspendCoroutine { continuation ->
+        amazonData?.rewardId?.let {
+            val adLoader = DTBAdRequest()
+            adLoader.setSizes(DTBAdSize.DTBVideo(320, 480, it))
+            adLoader.loadAd(object : DTBAdCallback {
+                override fun onFailure(adError: AdError) {
+                    continuation.resume(Result.success(Pair("amazon_ad_error", adError)))
+                }
+
+                override fun onSuccess(dtbAdResponse: DTBAdResponse) {
+                    continuation.resume(Result.success(Pair("amazon_ad_response", dtbAdResponse)))
                 }
             })
         }
@@ -138,4 +180,24 @@ class AmazonManager() {
             })
         }
     }
+
+    suspend fun initMaxBannerV2(): Result<Pair<Any, Any>?> = suspendCoroutine { continuation ->
+        amazonData?.bannerId?.let {
+            val adFormat = MaxAdFormat.BANNER
+            val rawSize = DTBAdSize(adFormat.size.width, adFormat.size.height, it)
+            val size = DTBAdSize(rawSize.width, rawSize.height, it)
+            val adLoader = DTBAdRequest()
+            adLoader.setSizes(size)
+            adLoader.loadAd(object : DTBAdCallback {
+                override fun onFailure(adError: AdError) {
+                    continuation.resume(Result.success(Pair("amazon_ad_error", adError)))
+                }
+
+                override fun onSuccess(dtbAdResponse: DTBAdResponse) {
+                    continuation.resume(Result.success(Pair("amazon_ad_response", dtbAdResponse)))
+                }
+            })
+        }
+    }
+
 }
